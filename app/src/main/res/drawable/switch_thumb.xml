@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+
+        <shape
+            xmlns:android="http://schemas.android.com/apk/res/android">
+
+            <size
+                android:width="34.3dp"
+                android:height="34.3dp" />
+
+            <!--<solid-->
+            <!--android:color="#4cd964" />-->
+
+        </shape>
+    </item>
+    <item android:drawable="@drawable/header_switch_btn" />
+    <item android:drawable="@drawable/switch_btn_icon"
+        android:bottom="10dp"
+        android:left="11dp"
+        android:right="11dp"
+        android:top="5dp"/>
+</layer-list>

@@ -10,5 +10,6 @@
     <color name="background">#ff333333</color>
     <color name="shadow">#AA000000</color>
 
+    <color name="switch_color">#9CCFEC</color>
 
 </resources>
