@@ -1,0 +1,498 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/main_background">
+
+        <ImageView
+            android:id="@+id/iv_profile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/profile"
+            android:layout_marginTop="63.7dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            app:srcCompat="@drawable/profile" />
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14.7dp"
+            android:fontFamily="@font/binggraeii"
+            android:gravity="center_horizontal"
+            android:letterSpacing="-0.05"
+            android:lineSpacingExtra="-3.5sp"
+            android:text="우리들생활과학의 집"
+            android:textColor="#676767"
+            android:textSize="17.2sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/iv_profile"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <LinearLayout
+            android:id="@+id/lo_circle_area"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/iv_profile"
+            app:layout_constraintVertical_bias="0.0">
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="17.7dp"
+                android:background="@drawable/main_circle_bg">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="20dp"
+                    android:fontFamily="@font/binggraeiibold"
+                    android:gravity="center_horizontal"
+                    android:letterSpacing="-0.05"
+                    android:lineSpacingExtra="-3.5sp"
+                    android:text="공기질"
+                    android:textColor="#676767"
+                    android:textSize="17.2sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="11dp"
+                    android:fontFamily="@font/binggraeii"
+                    android:gravity="center_horizontal"
+                    android:letterSpacing="-0.05"
+                    android:lineSpacingExtra="-3.5sp"
+                    android:text="매우 좋음"
+                    android:textColor="#676767"
+                    android:textSize="17.2sp" />
+
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="17.7dp"
+                android:background="@drawable/main_circle_bg">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="23dp"
+                    android:fontFamily="@font/binggraeiibold"
+                    android:gravity="center_horizontal"
+                    android:letterSpacing="-0.05"
+                    android:lineSpacingExtra="-3.5sp"
+                    android:text="습도"
+                    android:textColor="#676767"
+                    android:textSize="17.2sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="11dp"
+                    android:layout_marginEnd="3dp"
+                    android:fontFamily="@font/binggraeii"
+                    android:gravity="center_horizontal"
+                    android:letterSpacing="-0.05"
+                    android:lineSpacingExtra="-7sp"
+                    android:text="48"
+                    android:textColor="#676767"
+                    android:textSize="34sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginTop="17dp"
+                    android:fontFamily="@font/binggraeii"
+                    android:gravity="center_horizontal"
+                    android:text="%"
+                    android:textColor="#676767"
+                    android:textSize="12sp" />
+
+
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/main_circle_bg">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="20dp"
+                    android:fontFamily="@font/binggraeiibold"
+                    android:gravity="center_horizontal"
+                    android:letterSpacing="-0.05"
+                    android:lineSpacingExtra="-3.5sp"
+                    android:text="온도"
+                    android:textColor="#676767"
+                    android:textSize="17.2sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="11dp"
+                    android:layout_marginEnd="3dp"
+                    android:fontFamily="@font/binggraeii"
+                    android:gravity="center_horizontal"
+                    android:letterSpacing="-0.05"
+                    android:lineSpacingExtra="-7sp"
+                    android:text="21"
+                    android:textColor="#676767"
+                    android:textSize="34sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="29dp"
+                    android:layout_marginTop="17dp"
+                    android:fontFamily="@font/binggraeii"
+                    android:gravity="center_horizontal"
+                    android:letterSpacing="-0.05"
+                    android:lineSpacingExtra="-7sp"
+                    android:text="℃"
+                    android:textColor="#676767"
+                    android:textSize="17.2sp" />
+
+            </FrameLayout>
+
+        </LinearLayout>
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/lo_circle_area">
+
+            <Button
+                android:id="@+id/btn_add_device"
+                android:layout_width="match_parent"
+                android:layout_height="53.7dp"
+                android:background="@color/white"
+                android:layout_marginEnd="1dp"
+                android:elevation="10dp"
+                android:fontFamily="@font/binggraeii"
+                android:gravity="center_horizontal|center_vertical"
+                android:letterSpacing="-0.05"
+                android:lineSpacingExtra="8sp"
+                android:text="기기 추가"
+                android:textColor="#676767"
+                android:textSize="19sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias=".2" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="22.7dp"
+                android:fontFamily="@font/binggraeii"
+                android:gravity="center_horizontal"
+                android:letterSpacing="-0.05"
+                android:lineSpacingExtra="-2.8sp"
+                android:text="My Device"
+                android:textColor="#494949"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias=".0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/btn_add_device"
+                app:layout_constraintVertical_bias=".0" />
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="137.3dp"
+                android:layout_marginTop="49.7dp"
+                android:paddingStart="2dp"
+                android:paddingEnd="2dp"
+                android:paddingBottom="3dp"
+                android:clipToPadding="false"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias=".0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/btn_add_device"
+                app:layout_constraintVertical_bias=".0">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="11.7dp"
+                    android:layout_marginStart="35.3dp"
+                    android:elevation="11dp"
+                    android:src="@drawable/humi"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/godoroundedr"
+                    android:layout_marginTop="85dp"
+                    android:layout_marginStart="22.7dp"
+                    android:elevation="11dp"
+                    android:textSize="38.5sp"
+                    android:textColor="#676767"
+                    android:lineSpacingExtra="-20.5sp"
+                    android:gravity="center_horizontal"
+                    android:text="Humi"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/binggraeii"
+                    android:layout_gravity="center"
+                    android:elevation="11dp"
+                    android:textSize="19sp"
+                    android:textColor="#676767"
+                    android:letterSpacing="-0.05"
+                    android:lineSpacingExtra="8sp"
+                    android:gravity="center_horizontal"
+                    android:text="탭하여 전원 켜기"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/binggraeii"
+                    android:layout_gravity="end"
+                    android:layout_marginTop="19.3dp"
+                    android:layout_marginEnd="18.3dp"
+                    android:elevation="11dp"
+                    android:textSize="11sp"
+                    android:textColor="#676767"
+                    android:letterSpacing="-0.05"
+                    android:lineSpacingExtra="4.7sp"
+                    android:gravity="center_horizontal"
+                    android:text="무세균 무소음 기화식 가습기"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/binggraeii"
+                    android:layout_gravity="end"
+                    android:layout_marginTop="34.7dp"
+                    android:layout_marginEnd="18.3dp"
+                    android:elevation="11dp"
+                    android:textSize="23sp"
+                    android:textColor="#676767"
+                    android:letterSpacing="-0.05"
+                    android:lineSpacingExtra="9.7sp"
+                    android:gravity="center_horizontal"
+                    android:text="휴미"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/binggraeii"
+                    android:layout_gravity="bottom|end"
+                    android:layout_marginBottom="15.7dp"
+                    android:layout_marginEnd="26.3dp"
+                    android:elevation="11dp"
+                    android:textSize="11sp"
+                    android:textColor="#676767"
+                    android:letterSpacing="-0.05"
+                    android:lineSpacingExtra="4.7sp"
+                    android:gravity="center_horizontal"
+                    android:text="디바이스 관리"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/binggraeii"
+                    android:layout_gravity="bottom|end"
+                    android:layout_marginBottom="12dp"
+                    android:layout_marginEnd="12dp"
+                    android:elevation="11dp"
+                    android:textSize="16.7sp"
+                    android:textColor="#676767"
+                    android:letterSpacing="-0.05"
+                    android:lineSpacingExtra="7.2sp"
+                    android:gravity="center_horizontal"
+                    android:text=">"
+                    />
+
+                <ImageButton
+                    android:id="@+id/btn_humi_on"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:elevation="10dp"
+                    android:src="@drawable/device_background"
+                    android:background="@color/white"
+                    android:contentDescription="humi" />
+
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="137.3dp"
+                android:layout_marginTop="197dp"
+                android:paddingStart="2dp"
+                android:paddingEnd="2dp"
+                android:paddingBottom="3dp"
+                android:clipToPadding="false"
+                android:layout_marginBottom="21.7dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias=".0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/btn_add_device"
+                app:layout_constraintVertical_bias=".0">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="18dp"
+                    android:layout_marginStart="27dp"
+                    android:elevation="11dp"
+                    android:src="@drawable/roomi"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/godoroundedr"
+                    android:layout_marginTop="85dp"
+                    android:layout_marginStart="22.7dp"
+                    android:elevation="11dp"
+                    android:textSize="38.5sp"
+                    android:textColor="#676767"
+                    android:lineSpacingExtra="-20.5sp"
+                    android:gravity="center_horizontal"
+                    android:text="Roomi"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/binggraeii"
+                    android:layout_gravity="center"
+                    android:elevation="11dp"
+                    android:textSize="19sp"
+                    android:textColor="#676767"
+                    android:letterSpacing="-0.05"
+                    android:lineSpacingExtra="8sp"
+                    android:gravity="center_horizontal"
+                    android:text="탭하여 전원 켜기"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/binggraeii"
+                    android:layout_gravity="end"
+                    android:layout_marginTop="19.3dp"
+                    android:layout_marginEnd="18.3dp"
+                    android:elevation="11dp"
+                    android:textSize="11sp"
+                    android:textColor="#676767"
+                    android:letterSpacing="-0.05"
+                    android:lineSpacingExtra="4.7sp"
+                    android:gravity="center_horizontal"
+                    android:text="플라즈마 제균 공기청정기"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/binggraeii"
+                    android:layout_gravity="end"
+                    android:layout_marginTop="34.7dp"
+                    android:layout_marginEnd="18.3dp"
+                    android:elevation="11dp"
+                    android:textSize="23sp"
+                    android:textColor="#676767"
+                    android:letterSpacing="-0.05"
+                    android:lineSpacingExtra="9.7sp"
+                    android:gravity="center_horizontal"
+                    android:text="루미"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/binggraeii"
+                    android:layout_gravity="bottom|end"
+                    android:layout_marginBottom="15.7dp"
+                    android:layout_marginEnd="26.3dp"
+                    android:elevation="11dp"
+                    android:textSize="11sp"
+                    android:textColor="#676767"
+                    android:letterSpacing="-0.05"
+                    android:lineSpacingExtra="4.7sp"
+                    android:gravity="center_horizontal"
+                    android:text="디바이스 관리"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/binggraeii"
+                    android:layout_gravity="bottom|end"
+                    android:layout_marginBottom="12dp"
+                    android:layout_marginEnd="12dp"
+                    android:elevation="11dp"
+                    android:textSize="16.7sp"
+                    android:textColor="#676767"
+                    android:letterSpacing="-0.05"
+                    android:lineSpacingExtra="7.2sp"
+                    android:gravity="center_horizontal"
+                    android:text=">"
+                    />
+
+                <ImageButton
+                    android:id="@+id/btn_roomi_on"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:elevation="10dp"
+                    android:src="@drawable/device_background"
+                    android:background="@color/white"
+                    android:contentDescription="roomi" />
+
+            </FrameLayout>
+
+        </android.support.constraint.ConstraintLayout>
+
+    </android.support.constraint.ConstraintLayout>
+
+</ScrollView>
