@@ -25,4 +25,8 @@
         <item name="trackTint">@color/switch_color</item>
     </style>
 
+    <style name="Widget.BottomNavigationView" parent="Widget.Design.BottomNavigationView">
+        <item name="fontFamily">@font/binggraeii</item>
+    </style>
+
 </resources>

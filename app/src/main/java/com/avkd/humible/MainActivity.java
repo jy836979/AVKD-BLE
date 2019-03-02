@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowCustomEnabled(true);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         getSupportActionBar().setCustomView(R.layout.custom_action_bar_layout);
-        View customView =getSupportActionBar().getCustomView();
+        View customView = getSupportActionBar().getCustomView();
 
         Toolbar parent =(Toolbar) customView.getParent();
         parent.setContentInsetsAbsolute(0,0);

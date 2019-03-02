@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/cardview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        card_view:cardCornerRadius="5dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="16.7dp"
+                android:paddingEnd="15dp"
+                android:background="#CCF3F9FD"
+                >
+                <TextView
+                    android:id="@+id/tv_device"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/binggraeii"
+                    android:layout_marginTop="14.3dp"
+                    android:layout_marginBottom="14.3dp"
+                    android:textSize="16.3sp"
+                    android:textColor="#575757"
+                    android:letterSpacing="-0.05"
+                    android:lineSpacingExtra="-8.7sp"
+                    android:text="Humi"
+                    />
+                <TextView
+                    android:id="@+id/tv_ago"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/binggraeii"
+                    android:textSize="16.3sp"
+                    android:textColor="#575757"
+                    android:letterSpacing="-0.05"
+                    android:lineSpacingExtra="-8.7sp"
+                    android:layout_gravity="end|center_vertical"
+                    android:text="29분 전"
+                    />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="16.7dp"
+                android:paddingEnd="15dp"
+                android:background="#CCE4F1F9"
+                >
+                <TextView
+                    android:id="@+id/tv_message"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/binggraeii"
+                    android:layout_marginTop="14.3dp"
+                    android:layout_marginBottom="19.3dp"
+                    android:textSize="16.3sp"
+                    android:textColor="#575757"
+                    android:letterSpacing="-0.05"
+                    android:text="현재 안방1의 실내 습도가 11%입니다. 가습이 필요합니다."
+                    />
+            </FrameLayout>
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+
+</RelativeLayout>

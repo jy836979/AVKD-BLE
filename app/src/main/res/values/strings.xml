@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">humible</string>
     <string name="profile">profile</string>
+
+    <string name="menu_home">홈</string>
+    <string name="menu_graph">그래프</string>
+    <string name="menu_notifications">알림</string>
+    <string name="menu_settings">설정</string>
 </resources>
