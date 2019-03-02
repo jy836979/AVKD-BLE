@@ -3,6 +3,7 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+    <color name="textColor">#323232</color>
 
     <color name="white">#FFFFFF</color>
     <color name="blue_dark">#ff1976d1</color>
@@ -11,5 +12,9 @@
     <color name="shadow">#AA000000</color>
 
     <color name="switch_color">#9CCFEC</color>
+
+    <color name="gray">#D8DBDC</color>
+    <color name="dark_gray">#656565</color>
+    <color name="light_blue">#54BAF9</color>
 
 </resources>

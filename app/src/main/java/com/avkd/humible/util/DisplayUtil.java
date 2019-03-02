@@ -1,4 +1,4 @@
-package com.avkd.humible.utils;
+package com.avkd.humible.util;
 
 import android.content.Context;
 

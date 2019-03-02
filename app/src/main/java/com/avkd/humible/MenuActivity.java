@@ -14,7 +14,7 @@ import android.view.View;
 import android.widget.Switch;
 import android.widget.TextView;
 
-public class MenuActivity extends AppCompatActivity {
+public class MenuActivity extends AppCompatActivity implements View.OnClickListener {
 
     private static final String SELECTED_ITEM = "arg_selected_item";
 
@@ -48,6 +48,8 @@ public class MenuActivity extends AppCompatActivity {
 
         tv_btn_menu.setVisibility(View.GONE);
         tv_btn_back.setVisibility(View.VISIBLE);
+
+        tv_btn_back.setOnClickListener(this);
 
         mBottomNav = findViewById(R.id.navigation);
         mBottomNav.setOnNavigationItemSelectedListener(item -> {
@@ -135,8 +137,13 @@ public class MenuActivity extends AppCompatActivity {
         }
     }
 
-    private int getColorFromRes(@ColorRes int resId) {
-        return ContextCompat.getColor(this, resId);
-    }
+    @Override
+    public void onClick(View v) {
 
+        switch (v.getId()) {
+            case R.id.tv_btn_back:
+                finish();
+                break;
+        }
+    }
 }
