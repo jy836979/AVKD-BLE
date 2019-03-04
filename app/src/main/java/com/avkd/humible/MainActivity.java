@@ -138,8 +138,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         //데이터 수신
         bt.setOnDataReceivedListener((data, message) -> {
-            Log.d("Bluetooth", "Listener Data - " + message);
-            Toast.makeText(MainActivity.this, message, Toast.LENGTH_SHORT).show();
+
+            if (data.length == 2) {
+                int temper = data[0];   // 온도
+                int humi = data[1];     // 습도
+                Log.d("BluetoothService", "OnDataReceived - 온도: " + temper + " | 습도: " + humi);
+            }
+
         });
 
         bt.setBluetoothConnectionListener(new BluetoothSPP.BluetoothConnectionListener() {
@@ -183,5 +188,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void showToastMessage(String message) {
         Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
+    }
+
+    private String bytes2String(byte[] b, int count) {
+
+        StringBuilder ret = new StringBuilder();
+        for (int i = 0; i < count; i++)
+        {
+            String myInt = Integer.toHexString((int) (b[i] & 0xFF));
+            ret.append("0x" + myInt);
+        }
+        return ret.toString();
     }
 }
