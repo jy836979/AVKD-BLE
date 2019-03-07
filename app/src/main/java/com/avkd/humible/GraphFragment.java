@@ -3,9 +3,13 @@ package com.avkd.humible;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.Legend;
@@ -17,10 +21,27 @@ import com.github.mikephil.charting.data.LineDataSet;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
-public class GraphFragment extends Fragment {
+public class GraphFragment extends Fragment implements View.OnClickListener {
+
+    private static String TAG = "GraphFragment";
 
     LineChart lineChart;
+    LinearLayout ll_btn01;
+    LinearLayout ll_btn02;
+    LinearLayout ll_btn03;
+    LinearLayout ll_btn04;
+    View[] views;
+
+    TextView tv_avg;
+    TextView tv_prev;
+    TextView tv_today;
+    TextView tv_next;
+    TextView tv_date;
+
+    Date dataDate = Date.TODAY;
+    String dataCode = AVKDConstents.HUMIDT_DATA_CODE;
 
     public static Fragment newInstance() {
         Fragment frag = new GraphFragment();
@@ -37,23 +58,29 @@ public class GraphFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_graph, container, false);
         lineChart = view.findViewById(R.id.line_chart);
 
-        setChart(getDumpData());
+        ll_btn01 = view.findViewById(R.id.ll_btn01);
+        ll_btn02 = view.findViewById(R.id.ll_btn02);
+        ll_btn03 = view.findViewById(R.id.ll_btn03);
+        ll_btn04 = view.findViewById(R.id.ll_btn04);
+        views = new View[]{ ll_btn01, ll_btn02, ll_btn03, ll_btn04 };
+
+        ll_btn01.setOnClickListener(this);
+        ll_btn02.setOnClickListener(this);
+        ll_btn03.setOnClickListener(this);
+        ll_btn04.setOnClickListener(this);
+
+        tv_avg = view.findViewById(R.id.tv_avg);
+        tv_prev = view.findViewById(R.id.tv_prev);
+        tv_today = view.findViewById(R.id.tv_today);
+        tv_next = view.findViewById(R.id.tv_next);
+        tv_date = view.findViewById(R.id.tv_date);
+
+        tv_prev.setOnClickListener(this);
+        tv_today.setOnClickListener(this);
+        tv_next.setOnClickListener(this);
+
+        updateData(AVKDConstents.HUMIDT_DATA_CODE);
         return view;
-    }
-
-    private List<Record> getDumpData() {
-
-        List<Record> records = new ArrayList<>();
-        records.add(new Record(1, 48));
-        records.add(new Record(2, 48));
-        records.add(new Record(3, 40));
-        records.add(new Record(4, 40));
-        records.add(new Record(5, 34));
-        records.add(new Record(6, 38));
-        records.add(new Record(7, 38));
-        records.add(new Record(8, 45));
-
-        return records;
     }
 
     private void setChart(List<Record> records) {
@@ -63,10 +90,10 @@ public class GraphFragment extends Fragment {
 
         ArrayList<Entry> values = new ArrayList<>();//차트 데이터 셋에 담겨질 데이터
 
-        for (Record record : records) { //values에 데이터를 담는 과정
-            long time = record.getTime();
+        for (int i=0; i < records.size(); i++) {//values에 데이터를 담는 과정
+            Record record = records.get(i);
             float weight = record.getValue();
-            values.add(new Entry(time, weight));
+            values.add(new Entry(i+1, weight));
         }
 
         LineDataSet lineDataSet = new LineDataSet(values, "시간 대 별 습도"); //LineDataSet 선언
@@ -121,5 +148,86 @@ public class GraphFragment extends Fragment {
         float padding = 0.2f;
         xAxis.setAxisMaximum(lineChart.getLineData().getXMax() + padding);
         xAxis.setAxisMinimum(lineChart.getLineData().getXMin() - padding);
+    }
+
+    @Override
+    public void onClick(View v) {
+
+        switch (v.getId()) {
+            case R.id.ll_btn01:
+                circleActive(v);
+                updateData(AVKDConstents.HUMIDT_DATA_CODE);
+                break;
+            case R.id.ll_btn02:
+                circleActive(v);
+                updateData(AVKDConstents.AIR_DATA_CODE);
+                break;
+            case R.id.ll_btn03:
+                circleActive(v);
+                updateData(AVKDConstents.TEMPR_DATA_CODE);
+                break;
+            case R.id.ll_btn04:
+                circleActive(v);
+                updateData(AVKDConstents.HUMIDF_DATA_CODE);
+                break;
+            case R.id.tv_prev:
+                dataDate = Date.YESTERDAY;
+                tv_prev.setVisibility(View.GONE);
+                tv_today.setVisibility(View.VISIBLE);
+                tv_next.setVisibility(View.GONE);
+                tv_date.setText("어제");
+                circleActive(ll_btn01);
+                updateData(AVKDConstents.HUMIDT_DATA_CODE);
+                break;
+            case R.id.tv_today:
+                dataDate = Date.TODAY;
+                tv_prev.setVisibility(View.VISIBLE);
+                tv_today.setVisibility(View.GONE);
+                tv_next.setVisibility(View.VISIBLE);
+                tv_date.setText("오늘");
+                circleActive(ll_btn01);
+                updateData(AVKDConstents.HUMIDT_DATA_CODE);
+                break;
+            case R.id.tv_next:
+                break;
+
+        }
+
+    }
+
+    private void circleActive(View v) {
+        ImageView iv;
+        for(View ll : views) {
+            iv = ll.findViewWithTag("active");
+            iv.setImageResource(R.drawable.gray_circle);
+        }
+        iv = v.findViewWithTag("active");
+        iv.setImageResource(R.drawable.blue_circle);
+
+        iv = v.findViewWithTag("active");
+    }
+
+    private void updateData(String dataCode) {
+
+        Log.d(TAG, "updateData:: dataCode - " + dataCode);
+        this.dataCode = dataCode;
+
+        int XAXIS_CNT = 8;
+        List<Record> records = AVKDData.getGraph(getContext(), dataDate, dataCode);
+
+        if (records.size() < XAXIS_CNT) {
+            int max = XAXIS_CNT-records.size();
+            for(int i=0; i < max; i++) {
+                records.add(new Record(0, 0.0f));
+            }
+        }
+
+        List<Record> graphArr = records.subList(records.size()-XAXIS_CNT, records.size());
+        Double sum = graphArr.stream().collect(Collectors.summingDouble(o -> o.getValue()));
+        Double average = sum/XAXIS_CNT;
+
+
+        setChart(graphArr);
+//        tv_avg.setText(average.intValue()+"%");
     }
 }

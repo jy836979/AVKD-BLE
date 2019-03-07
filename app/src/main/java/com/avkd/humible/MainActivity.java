@@ -13,7 +13,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Switch;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import com.avkd.humible.util.ToastUtil;
+
+import java.util.List;
 
 import app.akexorcist.bluetotohspp.library.BluetoothSPP;
 import app.akexorcist.bluetotohspp.library.BluetoothState;
@@ -25,18 +30,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     ImageButton btn_humi_on;
     ImageButton btn_roomi_on;
     BluetoothSPP bt;
-    private Switch sw_ble;
+    Switch sw_ble;
+
+    TextView tv_ht;
+    TextView tv_tp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        bt = new BluetoothSPP(this);
-        if(!bt.isBluetoothAvailable()) {
-            showToastMessage("블루투스를 지원하지 않는 기기입니다.");
-            finish();
-        }
+//        bt = new BluetoothSPP(this);
+//        if(!bt.isBluetoothAvailable()) {
+//            ToastUtil.showMessage(this, "블루투스를 지원하지 않는 기기입니다.");
+//            finish();
+//        }
 
         getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         getSupportActionBar().setDisplayShowHomeEnabled(false);
@@ -58,8 +66,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btn_humi_on.setOnClickListener(this);
         btn_roomi_on.setOnClickListener(this);
 
+        tv_ht = findViewById(R.id.tv_ht);
+        tv_tp = findViewById(R.id.tv_tp);
 
-        setupBleListener();
+        AVKDData.makeDumpData(getApplicationContext());
+        List<Record> records = AVKDData.getGraph(getApplicationContext(), Date.TODAY, AVKDConstents.HUMIDT_DATA_CODE);
+        int ht = (int) (records.size() > 0? records.get(records.size()-1).getValue() : 0.0f);
+        records = AVKDData.getGraph(getApplicationContext(), Date.TODAY, AVKDConstents.TEMPR_DATA_CODE);
+        int tp = (int) (records.size() > 0? records.get(records.size()-1).getValue() : 0.0f);
+
+        tv_ht.setText(ht+"");
+        tv_tp.setText(tp+"");
+
+//        setupBleListener();
 
     }
 
@@ -83,22 +102,26 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onDestroy() {
         super.onDestroy();
 
-        bt.stopService(); //블루투스 중지
+        if (bt != null) {
+            bt.stopService(); //블루투스 중지
+        }
     }
 
     @Override
     protected void onStart() {
         super.onStart();
 
-        if (!bt.isBluetoothEnabled()) {
-            Intent intent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
-            startActivityForResult(intent, BluetoothState.REQUEST_ENABLE_BT);
-        } else {
-            sw_ble.setChecked(bt.isBluetoothEnabled());
-            if(!bt.isServiceAvailable()) {
-                bt.setupService();
-                bt.startService(BluetoothState.DEVICE_OTHER);
+        if (bt != null) {
+            if (!bt.isBluetoothEnabled()) {
+                Intent intent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
+                startActivityForResult(intent, BluetoothState.REQUEST_ENABLE_BT);
+            } else {
+                sw_ble.setChecked(bt.isBluetoothEnabled());
+                if(!bt.isServiceAvailable()) {
+                    bt.setupService();
+                    bt.startService(BluetoothState.DEVICE_OTHER);
 //                setup();
+                }
             }
         }
     }
@@ -118,6 +141,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 sw_ble.setChecked(false);
             }
         }
+    }
+
+    private void updateHumi() {
+        List<Record> records = AVKDData.getGraph(getApplicationContext(), Date.TODAY, AVKDConstents.HUMIDT_DATA_CODE);
+        float ht = records.size() > 0? records.get(records.size()-1).getValue() : 0.0f;
+        records = AVKDData.getGraph(getApplicationContext(), Date.TODAY, AVKDConstents.HUMIDF_DATA_CODE);
+        float hf = records.size() > 0? records.get(records.size()-1).getValue() : 0.0f;
     }
 
     private void setupBleListener() {
@@ -184,10 +214,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Intent intent = new Intent(getApplicationContext(), DeviceList.class);
             startActivityForResult(intent, BluetoothState.REQUEST_CONNECT_DEVICE);
         }
-    }
-
-    private void showToastMessage(String message) {
-        Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
     }
 
     private String bytes2String(byte[] b, int count) {

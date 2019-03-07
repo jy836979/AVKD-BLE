@@ -1,9 +1,15 @@
 package com.avkd.humible;
 
+import com.google.gson.Gson;
+
+import org.json.JSONObject;
+
+import androidx.annotation.NonNull;
+
 public class Record {
 
-    int time;
-    float value;
+    private int time;
+    private float value;
 
     public Record(int time, float value) {
         this.time = time;
@@ -24,5 +30,12 @@ public class Record {
 
     public void setValue(float value) {
         this.value = value;
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        Gson gson = new Gson();
+        return gson.toJson(this);
     }
 }
