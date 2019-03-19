@@ -38,6 +38,7 @@ dependencies {
     implementation 'com.github.dmytrodanylyk.shadow-layout:library:1.0.3'
     implementation 'info.hoang8f:android-segmented:1.0.6'
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0-alpha'
+    implementation 'com.google.code.gson:gson:2.8.5'
     implementation project(':library')
     //    implementation 'com.akexorcist:bluetoothspp:1.0.0'
     testImplementation 'junit:junit:4.12'
