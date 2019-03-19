@@ -54,6 +54,7 @@
                     >
 
                     <LinearLayout
+                        android:id="@+id/ll_btn01"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
@@ -65,6 +66,7 @@
                             android:layout_height="match_parent"
                             android:layout_marginEnd="4.7dp"
                             android:src="@drawable/blue_circle"
+                            android:tag="active"
                             />
                         <TextView
                             android:layout_width="wrap_content"
@@ -79,6 +81,7 @@
                     </LinearLayout>
 
                     <LinearLayout
+                        android:id="@+id/ll_btn02"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
@@ -90,6 +93,7 @@
                             android:layout_height="match_parent"
                             android:layout_marginEnd="4.7dp"
                             android:src="@drawable/gray_circle"
+                            android:tag="active"
                             />
                         <TextView
                             android:layout_width="wrap_content"
@@ -104,6 +108,7 @@
                     </LinearLayout>
 
                     <LinearLayout
+                        android:id="@+id/ll_btn03"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
@@ -115,6 +120,7 @@
                             android:layout_height="match_parent"
                             android:layout_marginEnd="4.7dp"
                             android:src="@drawable/gray_circle"
+                            android:tag="active"
                             />
                         <TextView
                             android:layout_width="wrap_content"
@@ -129,6 +135,7 @@
                     </LinearLayout>
 
                     <LinearLayout
+                        android:id="@+id/ll_btn04"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
@@ -140,6 +147,7 @@
                             android:layout_height="match_parent"
                             android:layout_marginEnd="4.7dp"
                             android:src="@drawable/gray_circle"
+                            android:tag="active"
                             />
                         <TextView
                             android:layout_width="wrap_content"
@@ -624,6 +632,7 @@
                         android:text="오늘의 평균 습도"
                         />
                     <TextView
+                        android:id="@+id/tv_avg"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/binggraeii"
@@ -648,6 +657,7 @@
                 >
 
                 <TextView
+                    android:id="@+id/tv_prev"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/binggraeii"
@@ -661,6 +671,7 @@
                     />
 
                 <TextView
+                    android:id="@+id/tv_date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/binggraeii"
@@ -673,6 +684,7 @@
                     />
 
                 <TextView
+                    android:id="@+id/tv_next"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/binggraeii"
@@ -684,6 +696,22 @@
                     android:gravity="center_horizontal"
                     android:text="내일 &gt;"
                     />
+
+                <TextView
+                    android:id="@+id/tv_today"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/binggraeii"
+                    android:layout_gravity="end|center_vertical"
+                    android:textSize="13.8sp"
+                    android:textColor="#323232"
+                    android:letterSpacing="-0.05"
+                    android:lineSpacingExtra="-6.2sp"
+                    android:gravity="center_horizontal"
+                    android:text="오늘 &gt;"
+                    android:visibility="gone"
+                    />
+
 
             </FrameLayout>
 

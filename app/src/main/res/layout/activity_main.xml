@@ -109,6 +109,7 @@
                     android:textSize="17.2sp" />
 
                 <TextView
+                    android:id="@+id/tv_ht"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -156,6 +157,7 @@
                     android:textSize="17.2sp" />
 
                 <TextView
+                    android:id="@+id/tv_tp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
