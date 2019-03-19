@@ -1,5 +1,9 @@
 package com.avkd.humible;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
@@ -43,6 +47,8 @@ public class GraphFragment extends Fragment implements View.OnClickListener {
     Date dataDate = Date.TODAY;
     String dataCode = AVKDConstents.HUMIDT_DATA_CODE;
 
+    BroadcastReceiver mReceiver;
+
     public static Fragment newInstance() {
         Fragment frag = new GraphFragment();
         Bundle args = new Bundle();
@@ -78,6 +84,8 @@ public class GraphFragment extends Fragment implements View.OnClickListener {
         tv_prev.setOnClickListener(this);
         tv_today.setOnClickListener(this);
         tv_next.setOnClickListener(this);
+
+        settingReceiver();
 
         updateData(AVKDConstents.HUMIDT_DATA_CODE);
         return view;
@@ -150,6 +158,17 @@ public class GraphFragment extends Fragment implements View.OnClickListener {
         xAxis.setAxisMinimum(lineChart.getLineData().getXMin() - padding);
     }
 
+    private void settingReceiver() {
+        mReceiver = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                if(AVKDConstents.BLE_RECIVE_DATA.equals(intent.getAction())) {
+                    updateData(dataCode);
+                }
+            }
+        };
+    }
+
     @Override
     public void onClick(View v) {
 
@@ -193,6 +212,20 @@ public class GraphFragment extends Fragment implements View.OnClickListener {
 
         }
 
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        IntentFilter intentFilter = new IntentFilter();
+        intentFilter.addAction(AVKDConstents.BLE_RECIVE_DATA);
+        getActivity().registerReceiver(mReceiver, intentFilter);
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        getActivity().unregisterReceiver(mReceiver);
     }
 
     private void circleActive(View v) {

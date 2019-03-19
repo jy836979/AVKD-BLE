@@ -5,6 +5,8 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Build;
+import android.os.Handler;
+import android.os.Message;
 import android.util.Log;
 
 import com.google.gson.Gson;
@@ -17,6 +19,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 import java.util.stream.Collectors;
 
 import static java.util.stream.Collectors.groupingBy;
@@ -157,6 +160,14 @@ public class AVKDData {
         editor.commit();
     }
 
+    public static Record demoData(int time) {
+        Random random = new Random();
+        int randomIdx = random.nextInt(10);
+        float values[] = {48f, 48f, 40f, 40f, 34f, 38f, 38f, 45f};
+
+        return new Record(time, values[randomIdx]);
+    }
+
     @TargetApi(Build.VERSION_CODES.N)
     private static List<Record> jsonArrToRecordGroupArr(JSONArray arr) {
 
@@ -191,5 +202,5 @@ public class AVKDData {
         return recordArr;
     }
 
-
 }
+

@@ -78,6 +78,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         tv_ht.setText(ht+"");
         tv_tp.setText(tp+"");
 
+        new BleReciveDemo(getApplicationContext()).sendEmptyMessage(BleReciveDemo.TIMER_1);
+
 //        setupBleListener();
 
     }
