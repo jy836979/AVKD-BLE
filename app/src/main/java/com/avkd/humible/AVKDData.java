@@ -98,7 +98,7 @@ public class AVKDData {
 //        setGraph(context, Date.TODAY, AVKDConstents.TEMPR_DATA_CODE, arrTP);
         setGraph(context, Date.TODAY, AVKDConstents.HUMIDF_DATA_CODE, arrHF);
 
-        //        setGraph(context, Date.YESTERDAY, AVKDConstents.HUMIDT_DATA_CODE, arrHT);
+//        setGraph(context, Date.YESTERDAY, AVKDConstents.HUMIDT_DATA_CODE, arrHT);
         setGraph(context, Date.YESTERDAY, AVKDConstents.AIR_DATA_CODE, arrAR);
 //        setGraph(context, Date.YESTERDAY, AVKDConstents.TEMPR_DATA_CODE, arrTP);
         setGraph(context, Date.YESTERDAY, AVKDConstents.HUMIDF_DATA_CODE, arrHF);
@@ -122,31 +122,15 @@ public class AVKDData {
         return jsonArrToRecordGroupArr(records);
     }
 
-    public static List<Record> getGraphOrg(Context context, Date date, String type) {
-
-        SharedPreferences pref = context.getSharedPreferences(PREFERENCE_NAME, Activity.MODE_PRIVATE);
-
-        String jsonStrData = pref.getString(date.key(type), "");
-
-        JSONArray records = new JSONArray();
-        if (!jsonStrData.isEmpty()) {
-            try {
-                records = new JSONArray(jsonStrData);
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-        }
-
-        return jsonArrToRecordArr(records);
-    }
 
     public static void setRecord(Context context, Date date, String type, Record record) {
 
         SharedPreferences pref = context.getSharedPreferences(PREFERENCE_NAME, Activity.MODE_PRIVATE);
         SharedPreferences.Editor editor = pref.edit();
 
-        List<Record> arr = getGraphOrg(context, date, type);
-        arr.add(record);
+        JSONArray arr = getGraphOrg(context, date, type);
+        arr.put(record);
+
         editor.putString(date.key(type), arr.toString());
         editor.commit();
     }
@@ -162,7 +146,7 @@ public class AVKDData {
 
     public static Record demoData(int time) {
         Random random = new Random();
-        int randomIdx = random.nextInt(10);
+        int randomIdx = random.nextInt(7);
         float values[] = {48f, 48f, 40f, 40f, 34f, 38f, 38f, 45f};
 
         return new Record(time, values[randomIdx]);
@@ -202,5 +186,22 @@ public class AVKDData {
         return recordArr;
     }
 
+    private static JSONArray getGraphOrg(Context context, Date date, String type) {
+
+        SharedPreferences pref = context.getSharedPreferences(PREFERENCE_NAME, Activity.MODE_PRIVATE);
+
+        String jsonStrData = pref.getString(date.key(type), "");
+
+        JSONArray records = new JSONArray();
+        if (!jsonStrData.isEmpty()) {
+            try {
+                records = new JSONArray(jsonStrData);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return records;
+    }
 }
 

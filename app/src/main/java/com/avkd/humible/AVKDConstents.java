@@ -24,5 +24,7 @@ public class AVKDConstents {
     public static final int XAXIS_07 = 7;
     public static final int XAXIS_08 = 8;
 
+    public static final boolean IS_AMULATOR = false;
+
     public static final String BLE_RECIVE_DATA = APP_STORE_ID+".BLE_RECIVE_DATA";
 }

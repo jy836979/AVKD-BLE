@@ -33,6 +33,13 @@ public class ExampleUnitTest {
     }
 
     @Test
+    public void make_currentHour() {
+        Calendar cal = Calendar.getInstance();
+        int time = cal.get(Calendar.HOUR_OF_DAY);
+        System.out.println(time);
+    }
+
+    @Test
     public void make_json() throws JSONException {
 
         // 습도

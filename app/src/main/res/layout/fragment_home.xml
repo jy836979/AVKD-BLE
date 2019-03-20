@@ -5,7 +5,7 @@
     android:id="@+id/fragment_content"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/main_background"
+    android:background="#AFCFEE"
     tools:context="com.avkd.humible.HomeFragment"
     >
 
@@ -30,7 +30,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="30dp"
                 android:layout_marginBottom="30dp"
                 >
 
@@ -67,8 +67,8 @@
                         android:id="@+id/tv_num"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/binggraeii"
-                        android:textSize="66.7sp"
+                        android:fontFamily="@font/nanumsquareroundr"
+                        android:textSize="56.7sp"
                         android:textColor="#494949"
                         android:letterSpacing="-0.06"
                         android:lineSpacingExtra="-16.2sp"
@@ -80,7 +80,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/binggraeii"
+                        android:fontFamily="@font/nanumsquareroundr"
                         android:layout_marginBottom="12dp"
                         android:letterSpacing="-0.06"
                         android:lineSpacingExtra="-16.2sp"
@@ -93,7 +93,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/binggraeii"
+                    android:fontFamily="@font/nanumsquareroundr"
                     android:gravity="center_horizontal"
                     android:layout_marginTop="10dp"
                     android:letterSpacing="-0.06"
@@ -116,6 +116,8 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:layout_gravity="center_horizontal"
+                android:background="#E7F3FE"
+                android:elevation="10dp"
                 >
 
 
@@ -123,15 +125,17 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:layout_marginBottom="26dp"
                     >
 
                     <LinearLayout
+                        android:id="@+id/ll_btn01"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
                         android:gravity="center_horizontal"
                         android:layout_weight="1"
+                        android:paddingTop="26dp"
+                        android:paddingBottom="26dp"
                         >
                         <ImageView
                             android:layout_width="wrap_content"
@@ -141,28 +145,32 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@font/binggraeii"
+                            android:fontFamily="@font/nanumsquareroundr"
                             android:textSize="17.3sp"
                             android:textColor="#494949"
                             android:letterSpacing="-0.06"
                             android:lineSpacingExtra="3.7sp"
                             android:gravity="center_horizontal"
                             android:text="On/Off"
+                            android:layout_marginTop="15dp"
                             />
                     </LinearLayout>
 
                     <LinearLayout
-                        android:layout_width="2dp"
+                        android:layout_width="1dp"
                         android:layout_height="match_parent"
                         android:background="@color/white"
                         />
 
                     <LinearLayout
+                        android:id="@+id/ll_btn02"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
                         android:gravity="center_horizontal"
                         android:layout_weight="1"
+                        android:paddingTop="26dp"
+                        android:paddingBottom="26dp"
                         >
                         <ImageView
                             android:layout_width="wrap_content"
@@ -172,28 +180,32 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@font/binggraeii"
+                            android:fontFamily="@font/nanumsquareroundr"
                             android:textSize="17.3sp"
                             android:textColor="#494949"
                             android:letterSpacing="-0.06"
                             android:lineSpacingExtra="3.7sp"
                             android:gravity="center_horizontal"
                             android:text="Timer"
+                            android:layout_marginTop="15dp"
                             />
                     </LinearLayout>
 
                     <LinearLayout
-                        android:layout_width="2dp"
+                        android:layout_width="1dp"
                         android:layout_height="match_parent"
                         android:background="@color/white"
                         />
 
                     <LinearLayout
+                        android:id="@+id/ll_btn03"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
                         android:gravity="center_horizontal"
                         android:layout_weight="1"
+                        android:paddingTop="26dp"
+                        android:paddingBottom="26dp"
                         >
                         <ImageView
                             android:layout_width="wrap_content"
@@ -203,13 +215,14 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@font/binggraeii"
+                            android:fontFamily="@font/nanumsquareroundr"
                             android:textSize="17.3sp"
                             android:textColor="#494949"
                             android:letterSpacing="-0.06"
                             android:lineSpacingExtra="3.7sp"
                             android:gravity="center_horizontal"
                             android:text="Mood Light"
+                            android:layout_marginTop="15dp"
                             />
                     </LinearLayout>
 
@@ -217,7 +230,7 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="2dp"
+                    android:layout_height="1dp"
                     android:background="@color/white"
                     />
 
@@ -225,15 +238,17 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:layout_marginTop="26dp"
                     >
 
                     <LinearLayout
+                        android:id="@+id/ll_btn04"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
                         android:gravity="center_horizontal"
                         android:layout_weight="1"
+                        android:paddingTop="26dp"
+                        android:paddingBottom="26dp"
                         >
                         <ImageView
                             android:layout_width="wrap_content"
@@ -243,28 +258,32 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@font/binggraeii"
+                            android:fontFamily="@font/nanumsquareroundr"
                             android:textSize="17.3sp"
                             android:textColor="#494949"
-                            android:letterSpacing="-0.06"
-                            android:lineSpacingExtra="3.7sp"
+                            android:letterSpacing="-0.08"
+                            android:lineSpacingExtra="-3sp"
                             android:gravity="center_horizontal"
                             android:text="Automatic\nadjustment"
+                            android:layout_marginTop="5dp"
                             />
                     </LinearLayout>
 
                     <LinearLayout
-                        android:layout_width="2dp"
+                        android:layout_width="1dp"
                         android:layout_height="match_parent"
                         android:background="@color/white"
                         />
 
                     <LinearLayout
+                        android:id="@+id/ll_btn05"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
                         android:gravity="center_horizontal"
                         android:layout_weight="1"
+                        android:paddingTop="26dp"
+                        android:paddingBottom="26dp"
                         >
                         <ImageView
                             android:layout_width="wrap_content"
@@ -274,28 +293,32 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@font/binggraeii"
+                            android:fontFamily="@font/nanumsquareroundr"
                             android:textSize="17.3sp"
                             android:textColor="#494949"
                             android:letterSpacing="-0.06"
                             android:lineSpacingExtra="3.7sp"
                             android:gravity="center_horizontal"
                             android:text="Sleep"
+                            android:layout_marginTop="15dp"
                             />
                     </LinearLayout>
 
                     <LinearLayout
-                        android:layout_width="2dp"
+                        android:layout_width="1dp"
                         android:layout_height="match_parent"
                         android:background="@color/white"
                         />
 
                     <LinearLayout
+                        android:id="@+id/ll_btn06"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
                         android:gravity="center_horizontal"
                         android:layout_weight="1"
+                        android:paddingTop="26dp"
+                        android:paddingBottom="26dp"
                         >
                         <ImageView
                             android:layout_width="wrap_content"
@@ -305,13 +328,14 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@font/binggraeii"
+                            android:fontFamily="@font/nanumsquareroundr"
                             android:textSize="17.3sp"
                             android:textColor="#494949"
                             android:letterSpacing="-0.06"
                             android:lineSpacingExtra="3.7sp"
                             android:gravity="center_horizontal"
                             android:text="Sterilization"
+                            android:layout_marginTop="15dp"
                             />
                     </LinearLayout>
 
