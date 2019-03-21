@@ -78,16 +78,34 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
         switch (v.getId()) {
             case R.id.ll_btn01:
+                if(bt != null) {
+                    bt.send("0", false);
+                }
                 break;
             case R.id.ll_btn02:
+                if(bt != null) {
+                    bt.send("1", false);
+                }
                 break;
             case R.id.ll_btn03:
+                if(bt != null) {
+                    bt.send("2", false);
+                }
                 break;
             case R.id.ll_btn04:
+                if(bt != null) {
+                    bt.send("3", false);
+                }
                 break;
             case R.id.ll_btn05:
+                if(bt != null) {
+                    bt.send("4", false);
+                }
                 break;
             case R.id.ll_btn06:
+                if(bt != null) {
+                    bt.send("5", false);
+                }
                 break;
         }
     }
