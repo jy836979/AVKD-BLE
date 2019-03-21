@@ -174,13 +174,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-    private void updateHumi() {
-        List<Record> records = AVKDData.getGraph(getApplicationContext(), Date.TODAY, AVKDConstents.HUMIDT_DATA_CODE);
-        float ht = records.size() > 0? records.get(records.size()-1).getValue() : 0.0f;
-        records = AVKDData.getGraph(getApplicationContext(), Date.TODAY, AVKDConstents.HUMIDF_DATA_CODE);
-        float hf = records.size() > 0? records.get(records.size()-1).getValue() : 0.0f;
-    }
-
     private void setupBleListener() {
 
         //블루투스 스위치
@@ -248,6 +241,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             public void onReceive(Context context, Intent intent) {
                 if(AVKDConstents.BLE_RECIVE_DATA.equals(intent.getAction())) {
                     updateHtAndTpData();
+                    sendNotification();
                 }
             }
         };
