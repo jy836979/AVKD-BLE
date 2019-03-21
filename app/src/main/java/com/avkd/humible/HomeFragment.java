@@ -15,6 +15,8 @@ import android.widget.LinearLayout;
 import android.widget.Switch;
 import android.widget.Toast;
 
+import com.avkd.humible.util.ToastUtil;
+
 import java.util.Calendar;
 
 import app.akexorcist.bluetotohspp.library.BluetoothSPP;
@@ -57,7 +59,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         ll_btn03 = view.findViewById(R.id.ll_btn03);
         ll_btn04 = view.findViewById(R.id.ll_btn04);
         ll_btn05 = view.findViewById(R.id.ll_btn05);
-        ll_btn06 = view.findViewById(R.id.ll_btn05);
+        ll_btn06 = view.findViewById(R.id.ll_btn06);
 
         ll_btn01.setOnClickListener(this);
         ll_btn02.setOnClickListener(this);
