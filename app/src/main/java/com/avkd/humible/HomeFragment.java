@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import com.avkd.humible.util.ToastUtil;
 
+import java.time.LocalDate;
 import java.util.Calendar;
 
 import app.akexorcist.bluetotohspp.library.BluetoothSPP;
@@ -68,10 +69,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         ll_btn05.setOnClickListener(this);
         ll_btn06.setOnClickListener(this);
 
-        if(!AVKDConstents.IS_AMULATOR) {
-            setupBleListener();
-        }
-
         return view;
     }
 
@@ -80,98 +77,85 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
         switch (v.getId()) {
             case R.id.ll_btn01:
+
                 if(bt != null) {
-                    bt.send("0", false);
+                    if(ll_btn01.getTag() == null || !((boolean) ll_btn01.getTag())) {
+                        Log.d("ll_btn01", "ON");
+                        ll_btn01.setTag(true);
+                        bt.send("1", false);
+                    } else {
+                        Log.d("ll_btn01", "OFF");
+                        ll_btn01.setTag(false);
+                        bt.send("254", false);
+                    }
                 }
                 break;
             case R.id.ll_btn02:
                 if(bt != null) {
-                    bt.send("1", false);
+                    if(ll_btn02.getTag() == null || !((boolean) ll_btn02.getTag())) {
+                        Log.d("ll_btn02", "ON");
+                        ll_btn02.setTag(true);
+                        bt.send("2", false);
+                    } else {
+                        Log.d("ll_btn02", "OFF");
+                        ll_btn02.setTag(false);
+                        bt.send("253", false);
+                    }
                 }
                 break;
             case R.id.ll_btn03:
                 if(bt != null) {
-                    bt.send("2", false);
+                    if(ll_btn03.getTag() == null || !((boolean) ll_btn03.getTag())) {
+                        Log.d("ll_btn03", "ON");
+                        ll_btn03.setTag(true);
+                        bt.send("4", false);
+                    } else {
+                        Log.d("ll_btn03", "OFF");
+                        ll_btn03.setTag(false);
+                        bt.send("251", false);
+                    }
                 }
                 break;
             case R.id.ll_btn04:
                 if(bt != null) {
-                    bt.send("3", false);
+                    if(ll_btn04.getTag() == null || !((boolean) ll_btn04.getTag())) {
+                        Log.d("ll_btn04", "ON");
+                        ll_btn04.setTag(true);
+                        bt.send("8", false);
+                    } else {
+                        Log.d("ll_btn04", "OFF");
+                        ll_btn04.setTag(false);
+                        bt.send("247", false);
+                    }
                 }
                 break;
             case R.id.ll_btn05:
                 if(bt != null) {
-                    bt.send("4", false);
+                    if(ll_btn05.getTag() == null || !((boolean) ll_btn05.getTag())) {
+                        Log.d("ll_btn05", "ON");
+                        ll_btn05.setTag(true);
+                        bt.send("16", false);
+                    } else {
+                        Log.d("ll_btn05", "OFF");
+                        ll_btn05.setTag(false);
+                        bt.send("239", false);
+                    }
                 }
                 break;
             case R.id.ll_btn06:
                 if(bt != null) {
-                    bt.send("5", false);
+                    if(ll_btn06.getTag() == null || !((boolean) ll_btn06.getTag())) {
+                        Log.d("ll_btn06", "ON");
+                        ll_btn06.setTag(true);
+                        bt.send("32", false);
+                    } else {
+                        Log.d("ll_btn06", "OFF");
+                        ll_btn06.setTag(false);
+                        bt.send("223", false);
+                    }
                 }
                 break;
         }
     }
 
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-
-        if (bt != null) {
-            bt.stopService(); //블루투스 중지
-        }
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-
-        if (bt != null) {
-            if (!bt.isBluetoothEnabled()) {
-                Intent intent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
-                startActivityForResult(intent, BluetoothState.REQUEST_ENABLE_BT);
-            } else {
-                sw_ble.setChecked(bt.isBluetoothEnabled());
-                if(!bt.isServiceAvailable()) {
-                    bt.setupService();
-                    bt.startService(BluetoothState.DEVICE_OTHER);
-//                setup();
-                }
-            }
-        }
-    }
-
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-
-        if (requestCode == BluetoothState.REQUEST_CONNECT_DEVICE) {
-            if (resultCode == Activity.RESULT_OK)
-                bt.connect(data);
-        } else if (requestCode == BluetoothState.REQUEST_ENABLE_BT) {
-            if (resultCode == Activity.RESULT_OK) {
-                sw_ble.setChecked(true);
-                bt.setupService();
-                bt.startService(BluetoothState.DEVICE_OTHER);
-//                setup();
-            } else {
-                sw_ble.setChecked(false);
-            }
-        }
-    }
-
-    private void setupBleListener() {
-
-        //블루투스 스위치
-        sw_ble.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            if (isChecked){
-                if (!bt.isBluetoothEnabled()){
-                    Intent intent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
-                    startActivityForResult(intent, BluetoothState.REQUEST_ENABLE_BT);
-                }
-            } else {
-                if (bt.getServiceState() == BluetoothState.STATE_CONNECTED) {
-                    bt.disconnect();
-                }
-            }
-        });
-
-    }
 }

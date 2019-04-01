@@ -1,5 +1,7 @@
 package com.avkd.humible;
 
+import android.app.Activity;
+import android.bluetooth.BluetoothAdapter;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.BottomNavigationView;
@@ -13,12 +15,19 @@ import android.view.View;
 import android.widget.Switch;
 import android.widget.TextView;
 
+import com.avkd.humible.util.ToastUtil;
+
+import app.akexorcist.bluetotohspp.library.BluetoothSPP;
+import app.akexorcist.bluetotohspp.library.BluetoothState;
+
 public class MenuActivity extends AppCompatActivity implements View.OnClickListener {
 
     private static final String SELECTED_ITEM = "arg_selected_item";
 
     private BottomNavigationView mBottomNav;
     private int mSelectedItem;
+
+    BluetoothSPP bt;
 
     private TextView tv_btn_menu;
     private TextView tv_btn_back;
@@ -29,6 +38,10 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
+
+        if(!AVKDConstents.IS_AMULATOR) {
+            bt = new BluetoothSPP(this);
+        }
 
         getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         getSupportActionBar().setDisplayShowHomeEnabled(false);
@@ -64,6 +77,10 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
             selectedItem = mBottomNav.getMenu().getItem(0);
         }
         selectFragment(selectedItem);
+
+        if(!AVKDConstents.IS_AMULATOR) {
+            setupBleListener();
+        }
     }
 
     @Override
@@ -144,5 +161,68 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
                 finish();
                 break;
         }
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+
+        if (bt != null) {
+            bt.stopService(); //블루투스 중지
+        }
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+
+        if (bt != null) {
+            if (!bt.isBluetoothEnabled()) {
+                Intent intent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
+                startActivityForResult(intent, BluetoothState.REQUEST_ENABLE_BT);
+            } else {
+                sw_ble.setChecked(bt.isBluetoothEnabled());
+                if(!bt.isServiceAvailable()) {
+                    bt.setupService();
+                    bt.startService(BluetoothState.DEVICE_OTHER);
+//                setup();
+                }
+            }
+        }
+    }
+
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        if (requestCode == BluetoothState.REQUEST_CONNECT_DEVICE) {
+            if (resultCode == Activity.RESULT_OK)
+                bt.connect(data);
+        } else if (requestCode == BluetoothState.REQUEST_ENABLE_BT) {
+            if (resultCode == Activity.RESULT_OK) {
+                sw_ble.setChecked(true);
+                bt.setupService();
+                bt.startService(BluetoothState.DEVICE_OTHER);
+//                setup();
+            } else {
+                sw_ble.setChecked(false);
+            }
+        }
+    }
+
+    private void setupBleListener() {
+
+        //블루투스 스위치
+        sw_ble.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if (isChecked){
+                if (!bt.isBluetoothEnabled()){
+                    Intent intent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
+                    startActivityForResult(intent, BluetoothState.REQUEST_ENABLE_BT);
+                }
+            } else {
+                if (bt.getServiceState() == BluetoothState.STATE_CONNECTED) {
+                    bt.disconnect();
+                }
+            }
+        });
+
     }
 }

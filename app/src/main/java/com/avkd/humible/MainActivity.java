@@ -104,7 +104,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         switch (v.getId()) {
             case R.id.btn_add_device:
-                addDevice();
+                if(AVKDConstents.IS_AMULATOR) {
+                    addDevice();
+                }
                 break;
             case R.id.btn_humi_on:
                 openMenuActivity();
