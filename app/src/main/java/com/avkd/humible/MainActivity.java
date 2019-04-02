@@ -1,5 +1,6 @@
 package com.avkd.humible;
 
+import android.Manifest;
 import android.app.Activity;
 import android.app.ActivityOptions;
 import android.app.NotificationChannel;
@@ -12,6 +13,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.TaskStackBuilder;
 import android.support.v7.app.ActionBar;
@@ -60,7 +62,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 ToastUtil.showMessage(this, "블루투스를 지원하지 않는 기기입니다.");
                 finish();
             }
-            bt.autoConnect("IOIO");
+//            bt.autoConnect("IOIO");
         }
 
         getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
@@ -104,7 +106,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         switch (v.getId()) {
             case R.id.btn_add_device:
-                if(AVKDConstents.IS_AMULATOR) {
+                if(!AVKDConstents.IS_AMULATOR) {
                     addDevice();
                 }
                 break;

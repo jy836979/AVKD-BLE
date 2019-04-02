@@ -38,6 +38,7 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.Toast;
 
 @SuppressLint("NewApi")
 public class DeviceList extends Activity {
@@ -219,6 +220,7 @@ public class DeviceList extends Activity {
                 if(strSelectDevice == null) 
                 	strSelectDevice = "Select a device to connect";
                 setTitle(strSelectDevice);
+                Toast.makeText(getApplicationContext(), "discovery is finished", Toast.LENGTH_SHORT).show();
             }
         }
     };
