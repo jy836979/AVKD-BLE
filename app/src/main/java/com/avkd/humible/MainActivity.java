@@ -99,6 +99,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             new BleReciveDemo(getApplicationContext()).sendEmptyMessage(BleReciveDemo.TIMER_1);
         }
 
+        ActivityCompat.requestPermissions(this,
+                new String[]{Manifest.permission.ACCESS_FINE_LOCATION,
+                        Manifest.permission.ACCESS_COARSE_LOCATION}, 1);
+
     }
 
     @Override
