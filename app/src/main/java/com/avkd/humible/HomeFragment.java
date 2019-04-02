@@ -17,6 +17,8 @@ import android.widget.Toast;
 
 import com.avkd.humible.util.ToastUtil;
 
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
 import java.time.LocalDate;
 import java.util.Calendar;
 
@@ -49,7 +51,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
         if(!AVKDConstents.IS_AMULATOR) {
-            bt = new BluetoothSPP(getContext());
+            bt = ((MenuActivity)getActivity()).bt;
         }
 
         View customView = ((AppCompatActivity)getActivity()).getSupportActionBar().getCustomView();
@@ -77,85 +79,91 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
         switch (v.getId()) {
             case R.id.ll_btn01:
-
-                if(bt != null) {
+                if(bt != null && bt.isServiceAvailable()) {
                     if(ll_btn01.getTag() == null || !((boolean) ll_btn01.getTag())) {
                         Log.d("ll_btn01", "ON");
                         ll_btn01.setTag(true);
-                        bt.send("1", false);
+                        bt.send(intToByteArray(1), false);
                     } else {
                         Log.d("ll_btn01", "OFF");
                         ll_btn01.setTag(false);
-                        bt.send("254", false);
+                        bt.send(intToByteArray(254), false);
                     }
                 }
                 break;
             case R.id.ll_btn02:
-                if(bt != null) {
+                if(bt != null && bt.isServiceAvailable()) {
                     if(ll_btn02.getTag() == null || !((boolean) ll_btn02.getTag())) {
                         Log.d("ll_btn02", "ON");
                         ll_btn02.setTag(true);
-                        bt.send("2", false);
+                        bt.send(intToByteArray(2), false);
                     } else {
                         Log.d("ll_btn02", "OFF");
                         ll_btn02.setTag(false);
-                        bt.send("253", false);
+                        bt.send(intToByteArray(253), false);
                     }
                 }
                 break;
             case R.id.ll_btn03:
-                if(bt != null) {
+                if(bt != null && bt.isServiceAvailable()) {
                     if(ll_btn03.getTag() == null || !((boolean) ll_btn03.getTag())) {
                         Log.d("ll_btn03", "ON");
                         ll_btn03.setTag(true);
-                        bt.send("4", false);
+                        bt.send(intToByteArray(4), false);
                     } else {
                         Log.d("ll_btn03", "OFF");
                         ll_btn03.setTag(false);
-                        bt.send("251", false);
+                        bt.send(intToByteArray(251), false);
                     }
                 }
                 break;
             case R.id.ll_btn04:
-                if(bt != null) {
+                if(bt != null && bt.isServiceAvailable()) {
                     if(ll_btn04.getTag() == null || !((boolean) ll_btn04.getTag())) {
                         Log.d("ll_btn04", "ON");
                         ll_btn04.setTag(true);
-                        bt.send("8", false);
+                        bt.send(intToByteArray(8), false);
                     } else {
                         Log.d("ll_btn04", "OFF");
                         ll_btn04.setTag(false);
-                        bt.send("247", false);
+                        bt.send(intToByteArray(247), false);
                     }
                 }
                 break;
             case R.id.ll_btn05:
-                if(bt != null) {
+                if(bt != null && bt.isServiceAvailable()) {
                     if(ll_btn05.getTag() == null || !((boolean) ll_btn05.getTag())) {
                         Log.d("ll_btn05", "ON");
                         ll_btn05.setTag(true);
-                        bt.send("16", false);
+                        bt.send(intToByteArray(16), false);
                     } else {
                         Log.d("ll_btn05", "OFF");
                         ll_btn05.setTag(false);
-                        bt.send("239", false);
+                        bt.send(intToByteArray(239), false);
                     }
                 }
                 break;
             case R.id.ll_btn06:
-                if(bt != null) {
+                if(bt != null && bt.isServiceAvailable()) {
                     if(ll_btn06.getTag() == null || !((boolean) ll_btn06.getTag())) {
                         Log.d("ll_btn06", "ON");
                         ll_btn06.setTag(true);
-                        bt.send("32", false);
+                        bt.send(intToByteArray(32), false);
                     } else {
                         Log.d("ll_btn06", "OFF");
                         ll_btn06.setTag(false);
-                        bt.send("223", false);
+                        bt.send(intToByteArray(223), false);
                     }
                 }
                 break;
         }
+    }
+
+    private static byte[] intToByteArray(final int integer) {
+        ByteBuffer buff = ByteBuffer.allocate(Integer.SIZE / 8);
+        buff.putInt(integer);
+        buff.order(ByteOrder.BIG_ENDIAN);
+        return buff.array();
     }
 
 }

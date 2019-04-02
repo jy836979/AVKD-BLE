@@ -217,6 +217,7 @@
                         android:text="푸시 알림"
                         />
                     <Switch
+                        android:id="@+id/sw_push"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="end|center_vertical"
@@ -422,13 +423,13 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/binggraeii"
+                        android:fontFamily="@font/nanumsquareroundr"
                         android:layout_gravity="end|center_vertical"
-                        android:textSize="22.2sp"
+                        android:textSize="16.3sp"
                         android:textColor="#494949"
                         android:letterSpacing="-0.05"
                         android:lineSpacingExtra="-11.8sp"
-                        android:text="&gt;"
+                        android:text="1.0.0"
                         />
                     <LinearLayout
                         android:layout_width="match_parent"

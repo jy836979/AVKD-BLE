@@ -185,6 +185,7 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
                 if(!bt.isServiceAvailable()) {
                     bt.setupService();
                     bt.startService(BluetoothState.DEVICE_OTHER);
+//                    bt.startService(BluetoothState.DEVICE_ANDROID);
 //                setup();
                 }
             }
@@ -201,6 +202,7 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
                 sw_ble.setChecked(true);
                 bt.setupService();
                 bt.startService(BluetoothState.DEVICE_OTHER);
+//                bt.startService(BluetoothState.DEVICE_ANDROID);
 //                setup();
             } else {
                 sw_ble.setChecked(false);

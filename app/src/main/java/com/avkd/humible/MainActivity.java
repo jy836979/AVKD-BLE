@@ -115,10 +115,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
                 break;
             case R.id.btn_humi_on:
-                openMenuActivity();
+                if(bt.isServiceAvailable()) {
+                    openMenuActivity();
+                } else {
+                    ToastUtil.showMessage(this, "블루툿스 기기를 연결해주세요.");
+                }
                 break;
             case R.id.btn_roomi_on:
-                openMenuActivity();
+                if(bt.isServiceAvailable()) {
+                    openMenuActivity();
+                } else {
+                    ToastUtil.showMessage(this, "블루툿스 기기를 연결해주세요.");
+                }
                 break;
         }
     }
@@ -159,6 +167,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 if(!bt.isServiceAvailable()) {
                     bt.setupService();
                     bt.startService(BluetoothState.DEVICE_OTHER);
+//                    bt.startService(BluetoothState.DEVICE_ANDROID);
 //                setup();
                 }
             }
@@ -175,6 +184,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 sw_ble.setChecked(true);
                 bt.setupService();
                 bt.startService(BluetoothState.DEVICE_OTHER);
+//                bt.startService(BluetoothState.DEVICE_ANDROID);
 //                setup();
             } else {
                 sw_ble.setChecked(false);
