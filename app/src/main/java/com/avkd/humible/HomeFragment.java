@@ -79,11 +79,12 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
         switch (v.getId()) {
             case R.id.ll_btn01:
-                if(bt != null && bt.isServiceAvailable()) {
+                if(bt != null && bt.getServiceState() == BluetoothState.STATE_CONNECTED) {
                     if(ll_btn01.getTag() == null || !((boolean) ll_btn01.getTag())) {
                         Log.d("ll_btn01", "ON");
                         ll_btn01.setTag(true);
                         bt.send(intToByteArray(1), false);
+                        bt.send("1", false);
                     } else {
                         Log.d("ll_btn01", "OFF");
                         ll_btn01.setTag(false);
@@ -92,7 +93,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 }
                 break;
             case R.id.ll_btn02:
-                if(bt != null && bt.isServiceAvailable()) {
+                if(bt != null && bt.getServiceState() == BluetoothState.STATE_CONNECTED) {
                     if(ll_btn02.getTag() == null || !((boolean) ll_btn02.getTag())) {
                         Log.d("ll_btn02", "ON");
                         ll_btn02.setTag(true);
@@ -105,7 +106,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 }
                 break;
             case R.id.ll_btn03:
-                if(bt != null && bt.isServiceAvailable()) {
+                if(bt != null && bt.getServiceState() == BluetoothState.STATE_CONNECTED) {
                     if(ll_btn03.getTag() == null || !((boolean) ll_btn03.getTag())) {
                         Log.d("ll_btn03", "ON");
                         ll_btn03.setTag(true);
@@ -118,7 +119,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 }
                 break;
             case R.id.ll_btn04:
-                if(bt != null && bt.isServiceAvailable()) {
+                if(bt != null && bt.getServiceState() == BluetoothState.STATE_CONNECTED) {
                     if(ll_btn04.getTag() == null || !((boolean) ll_btn04.getTag())) {
                         Log.d("ll_btn04", "ON");
                         ll_btn04.setTag(true);
@@ -131,7 +132,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 }
                 break;
             case R.id.ll_btn05:
-                if(bt != null && bt.isServiceAvailable()) {
+                if(bt != null && bt.getServiceState() == BluetoothState.STATE_CONNECTED) {
                     if(ll_btn05.getTag() == null || !((boolean) ll_btn05.getTag())) {
                         Log.d("ll_btn05", "ON");
                         ll_btn05.setTag(true);
@@ -144,7 +145,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 }
                 break;
             case R.id.ll_btn06:
-                if(bt != null && bt.isServiceAvailable()) {
+                if(bt != null && bt.getServiceState() == BluetoothState.STATE_CONNECTED) {
                     if(ll_btn06.getTag() == null || !((boolean) ll_btn06.getTag())) {
                         Log.d("ll_btn06", "ON");
                         ll_btn06.setTag(true);

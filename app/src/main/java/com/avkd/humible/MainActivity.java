@@ -29,6 +29,8 @@ import android.widget.Toast;
 
 import com.avkd.humible.util.ToastUtil;
 
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
 import java.util.Calendar;
 import java.util.List;
 
@@ -115,14 +117,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
                 break;
             case R.id.btn_humi_on:
-                if(bt.isServiceAvailable()) {
+                if(bt.getServiceState() == BluetoothState.STATE_CONNECTED) {
                     openMenuActivity();
                 } else {
                     ToastUtil.showMessage(this, "블루툿스 기기를 연결해주세요.");
                 }
                 break;
             case R.id.btn_roomi_on:
-                if(bt.isServiceAvailable()) {
+                if(bt.getServiceState() == BluetoothState.STATE_CONNECTED) {
                     openMenuActivity();
                 } else {
                     ToastUtil.showMessage(this, "블루툿스 기기를 연결해주세요.");
@@ -362,5 +364,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             ret.append("0x" + myInt);
         }
         return ret.toString();
+    }
+
+    private static byte[] intToByteArray(final int integer) {
+        ByteBuffer buff = ByteBuffer.allocate(Integer.SIZE / 8);
+        buff.putInt(integer);
+        buff.order(ByteOrder.BIG_ENDIAN);
+        return buff.array();
     }
 }

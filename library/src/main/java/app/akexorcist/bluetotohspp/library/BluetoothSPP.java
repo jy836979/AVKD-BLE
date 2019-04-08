@@ -44,7 +44,7 @@ public class BluetoothSPP {
     private BluetoothAdapter mBluetoothAdapter = null;
 
     // Member object for the chat services
-    private BluetoothService mChatService = null;
+    private static BluetoothService mChatService = null;
     
     // Name and Address of the connected device
     private String mDeviceName = null;
